@@ -33,3 +33,28 @@ class Order:
     def pay(self):
         total = self.total_price()
         self.customer.add_points(total)
+
+if __name__ == "__main__":
+    vip_customer = Customer("Alice", "vip")
+    basic_customer = Customer("Bob", "basic")
+
+    order1 = Order(1, vip_customer)
+    order1.add_item("라떼", 5500)
+    order1.add_item("아메리카노", 4500)
+
+    order2 = Order(2, basic_customer)
+    order2.add_item("카푸치노", 6000)
+
+    order3 = Order(3, vip_customer)
+    order3.add_item("에스프레소", 4000)
+
+    print(order1.total_price())
+    print(order2.total_price())
+    print(order3.total_price())
+
+    order1.pay()
+    order2.pay()
+    order3.pay()
+
+    print(vip_customer.summary())
+    print(basic_customer.summary())
