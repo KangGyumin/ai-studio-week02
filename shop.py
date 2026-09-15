@@ -23,7 +23,7 @@ class Order:
         self.items = items if items is not None else []
 
     def total_price(self):
-        total = sum(item['price'] for item in self.items)
+        total = sum(price for _, price in self.items)
         discount = self.customer.get_discount_rate()
         return int(total * (1 - discount))
 
